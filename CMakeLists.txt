@@ -1,0 +1,24 @@
+# Copyright 2020, CNRS
+# See LICENSE file.
+
+CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
+
+# Project properties
+SET(PROJECT_ORG loco-3d)
+SET(PROJECT_NAME solo-collisions)
+SET(PROJECT_DESCRIPTION "avoid autocollisions on the solo robot")
+SET(PROJECT_URL "https://github.com/${PROJECT_ORG}/${PROJECT_NAME}")
+
+# Project configuration
+SET(PROJECT_USE_CMAKE_EXPORT TRUE)
+
+# JRL-cmakemodule setup
+INCLUDE(cmake/base.cmake)
+
+# Project definition
+COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
+PROJECT(${PROJECT_NAME} ${PROJECT_ARGS})
+
+# Main library
+ADD_LIBRARY(${PROJECT_NAME} INTERFACE)
+INSTALL(TARGETS ${PROJECT_NAME} EXPORT ${TARGETS_EXPORT_NAME} DESTINATION lib)
